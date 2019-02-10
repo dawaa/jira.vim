@@ -9,4 +9,6 @@ set cpo&vim
 inoremap <silent> <plug>(JvComplete)        <c-r>=jv#_complete(0)<cr>
 inoremap <silent> <plug>(JvCompleteNoCache) <c-r>=jv#_complete(1)<cr>
 
+command! -nargs=0 JvGetIssuesNoCache call jv#get_issues()
+
 let &cpo=s:cpo_save

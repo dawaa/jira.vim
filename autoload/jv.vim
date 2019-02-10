@@ -3,6 +3,20 @@ function! jv#go(...) abort
     return jv#http#request(config)
 endfunction
 
+function! jv#_get_issues(resolve, reject) abort
+    call jira#api#get_issues(1)
+    call a:resolve()
+endfunction
+
+function! jv#get_issues() abort
+    call jv#process#async('jv#_get_issues')
+        \.then({-> execute('echom "fetched issues!"', '')})
+endfunction
+
+function! jv#bind_fn(fn_name, args) abort
+    return function(a:fn_name, a:args)
+endfunction
+
 " Taken from
 " https://github.com/mnpk/vim-jira-complete/blob/master/autoload/jira.vim#L52
 function! jv#lh_option_get(name, default, ...)
