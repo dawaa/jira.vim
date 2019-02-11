@@ -5,3 +5,5 @@ Web.HTTP
 Data.Base64
 Web.JSON
 Async.Promise
+System.Job
+Prelude
