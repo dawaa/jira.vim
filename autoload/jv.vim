@@ -53,7 +53,7 @@ function! s:_issues_complete(data) abort
     let format = jv#lh_option_get('jira_completion_format', 'v:val.abbr')
     let line = getline('.')
     call map(issues, "extend(v:val, {'word': ".format."})")
-    call filter(issues, 'v:val.abbr =~ line')
+    call filter(issues, 'v:val.abbr =~? line')
 
     if !empty(issues)
         call complete(1, issues)
