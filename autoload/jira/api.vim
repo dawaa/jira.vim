@@ -27,6 +27,7 @@ function! jira#api#get_issues(force_update) abort
     let user = jv#lh_option_get('jira_user', '')
 
     if s:Prelude.is_dict(s:_promise)
+        call s:_promise.then({-> execute('let s:_promise = -1', '')})
         return s:_promise
     endif
 
