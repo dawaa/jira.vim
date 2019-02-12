@@ -11,6 +11,9 @@ endfunction
 
 " Taken from
 " https://github.com/mnpk/vim-jira-complete/blob/master/autoload/jira.vim#L52
+"
+" Which in turn, was taken from
+" https://github.com/LucHermitte/lh-vim-lib
 function! jv#lh_option_get(name, default, ...)
     let scope = (a:0 == 1) ? a:1 : 'bg'
     let name = a:name
