@@ -49,6 +49,7 @@ function! s:_issues_complete(data) abort
     else
         let issues = a:data
     endif
+
     let issues = map(issues[:], { _, v -> v })
     let format = jv#lh_option_get('jira_completion_format', 'v:val.abbr')
     let line = getline('.')
@@ -56,7 +57,11 @@ function! s:_issues_complete(data) abort
     call filter(issues, 'v:val.abbr =~? line')
 
     if !empty(issues)
-        call complete(1, issues)
+        try
+            call lh#icomplete#new(0, issues, '').start_completion()
+        catch
+            call complete(1, issues)
+        endtry
     endif
 
     return ''
